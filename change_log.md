@@ -9,3 +9,4 @@ Each release should be in the following format: [Vx.y.z] - release date yyyy-mm-
 ### Added
 
 - Used [rubocop-rails-omakase](https://github.com/rails/rubocop-rails-omakase) as a base set of rubocop rules.
+- Added [rubocop-rspec](https://github.com/rubocop/rubocop-rspec) along with some customisations of the rules.
