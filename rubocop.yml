@@ -1,0 +1,116 @@
+# Omakase Ruby styling for Rails
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
+plugins:
+  - rubocop-rspec
+
+# ---
+# Layout
+# ---
+
+# Do not include empty lines between the code inside do and end keywords
+Layout/EmptyLinesAroundBlockBody:
+  EnforcedStyle: no_empty_lines
+
+# Our in-house style is to put a space after the final class keyword, so two lines with class keywords do not have a space between them
+# Migrations are excluded as the generated migrations do not match this style
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines_except_namespace
+  Exclude:
+    - 'db/migrate/*.rb'
+
+# Our in-house style is to put a space after the final module keyword, so two lines with module keywords (or a module followed by class keyword)
+# do not have a space between them
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: empty_lines_except_namespace
+
+# Our in-house style is not to add spaces at the start of end of brackets
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBrackets: no_space
+  Exclude:
+    - 'db/migrate/*.rb'
+
+# foo { bar } not foo {bar}
+# but we allow foo {}
+Layout/SpaceInsideBlockBraces:
+  EnforcedStyleForEmptyBraces: no_space
+
+# Excluding an auto-generated version file that doesn't match this
+Layout/TrailingEmptyLines:
+  Exclude:
+    - 'config/initializers/version.rb'
+
+# ---
+# Style
+# ---
+
+# We don't enforce double quoted strings
+Style/StringLiterals:
+  Enabled: false
+
+# Include the comma at the end of multi-line arrays but not single-line arrays
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# Include the comma at the end of multi-line hashes but not single-line hashes
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# ---
+# RSpec
+# ---
+
+# Is currently not enforced, to avoid rewriting existing applications
+RSpec/ContextWording:
+  Enabled: false
+
+# Is currently not enforced, to avoid rewriting existing applications
+RSpec/ExampleLength:
+  Enabled: false
+
+# Prefer it_behaves_like to include_examples
+# New in 3.6
+RSpec/IncludeExamples:
+  Enabled: true
+
+# Checks for local variables from outer scopes used inside examples
+# new in 3.8
+RSpec/LeakyLocalVariable: 
+  Enabled: true
+
+# Checks if example groups contain too many let and subject calls.
+# Increased from the Omakase default of 5
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+# Checks that message expectations are set using spies.
+# We don't currently enforce this behaviour
+RSpec/MessageSpies:
+  Enabled: false
+
+# Enforces use of a maximum of 1 expect(...) per test
+# We don't enforce this behaviour as we allow multiple expects per test if there is complex setup or checking to be performed
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# Enforces the use of subject(:name) { ... } rather than anonymous subject { ... } usage
+# We don't enforce this behaviour
+RSpec/NamedSubject:
+  Enabled: false
+
+# Checks for the use of output calls like puts and print in specs.
+# new in 3.9
+RSpec/Output:
+  Enabled: true
+
+# This enforces the removal of any response to enforced mocks (i.e. expect(...).to receive(...).and_return(...) is invalid)
+# We don't enforce this behaviour
+RSpec/StubbedMock:
+  Enabled: false
+
+# Checks for stubbed test subjects.
+# Is currently not enforced, to avoid rewriting existing applications
+RSpec/SubjectStub:
+  Enabled: false
