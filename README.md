@@ -9,7 +9,7 @@ This gem is intended to document and enforce the ruby coding standards for the H
 First add this to your Gemfile:
 
 ```ruby
-gem "rubocop-epigenesys-hr", require: false, group: [ :development ]
+gem "epi-rubocop", require: false, group: [ :development ]
 ```
 
 Then run bundle, then bundle binstubs rubocop.
@@ -19,7 +19,7 @@ Then add a default .rubocop.yml file in the root of your application with:
 ```yml
 # epiGenesys Ruby styling for Rails
 inherit_gem:
-  rubocop-epigenesys-hr: rubocop.yml
+  epi-rubocop: rubocop.yml
 
 # Add project specific rules here, if required
 ```

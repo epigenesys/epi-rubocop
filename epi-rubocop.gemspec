@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
-  s.name = "rubocop-epigenesys-hr"
+  s.name = "epi-rubocop"
   s.summary = "Ruby coding standard for the HR team of epigenesys"
   s.authors = ["Jack Slinger", "James Gregory-Monk"]
   s.email = "info@epigenesys.org.uk"
 
   s.license = "MIT"
 
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.platform = Gem::Platform::RUBY
 
   s.add_dependency "rubocop", ">= 1.74"
