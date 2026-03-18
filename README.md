@@ -1,39 +1,70 @@
-# Rubocop epigenesys HR
+# epiRubocop
 
-This gem is intended to document and enforce the ruby coding standards for the HR team of epiGenesys.
+This gem is intended to document and enforce the Ruby, Rails and RSpec coding standards used by epiGenesys software engineers.
 
 ---
 
 ## Installation
 
-First add this to your Gemfile:
+1. Add this to your Gemfile:
 
-```ruby
-gem "epi-rubocop", require: false, group: [ :development ]
-```
+    ```ruby
+    gem "epi-rubocop", require: false, group: [ :development ]
+    ```
 
-Then run bundle, then bundle binstubs rubocop.
+2. Run `bundle install` to install Rubocop.
 
-Then add a default .rubocop.yml file in the root of your application with:
+3. Add a default `.rubocop.yml` file in the root of your application with the following contents:
+
+    ```yml
+    # epiGenesys coding standard
+    inherit_gem:
+      epi-rubocop: rubocop.yml
+
+    # Add project specific rules here, if required
+    ```
+
+4. Run `bundle exec rubocop` to check for compliance and `bundle exec rubocop -a` to automatically fix violations.
+
+### Adding to existing projects
+
+When adding this gem to an existing project, you should make a single commit with all of the automatic rubocop changes made to every file.
+Ideally this should be done when there is not much ongoing work to minimise disruption to in development branches.
+
+Some of the rules especially those regarding RSpec may require significant re-writing, to avoid requiring a lot of effort before this standard can be used, we also provide a more lax legacy standard.
 
 ```yml
 # epiGenesys Ruby styling for Rails
 inherit_gem:
-  epi-rubocop: rubocop.yml
+  epi-rubocop: rubocop-legacy.yml
 
 # Add project specific rules here, if required
 ```
 
-Now you can run ./bin/rubocop to check for compliance and ./bin/rubocop -a to automatically fix violations.
-
 ### Setting up VSCode to enforce these rules on every save
 
-TODO: Add the steps required here.
+1. Automatic enforcement of RuboCop rules is done automatically by the Ruby LSP extension.
 
-### Setting up gitlab-ci to check these rules are enforced
+### Setting up GitLab CI to check these rules are enforced
 
-TODO: Add the config require here.
+Inside your `.gitlab-ci.yml` file, add the following job below any `rspec` or `jest` jobs:
 
+```yml
+rubocop:
+  stage: test
+  extends: .skip-on-scheduled-run
+  interruptible: true
+  before_script:
+    - bundle config --global jobs "$(nproc)"
+    - bundle config --local path 'vendor/gems'
+    - bundle config --global without oracle
+
+    - bundle check
+  needs:
+    - job: bundler
+  script:
+    - bundle exec rubocop
+```
 ---
 
 ## Development
@@ -41,7 +72,6 @@ TODO: Add the config require here.
 The `rubocop.yml` file stores the rubocop rules that this gem enforces. Changes to our teams agreed style can be implemented here, please ensure that each rule also includes a comment detailing what it does.
 
 This project includes a change log to track changes. Please ensure this is kept up to date if you make any changes.
-
 
 ---
 

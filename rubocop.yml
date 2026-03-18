@@ -25,6 +25,14 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLinesAroundModuleBody:
   EnforcedStyle: empty_lines_except_namespace
 
+# Our in-house style is not to indent methods after a private / protected keyword
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
+
+# Our in-house style is to include spaces after a lambda literal
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
 # Our in-house style is not to add spaces at the start of end of brackets
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space
@@ -46,9 +54,9 @@ Layout/TrailingEmptyLines:
 # Style
 # ---
 
-# We don't enforce double quoted strings
+# Our in-house style is to enforce double_quotes where possible
 Style/StringLiterals:
-  Enabled: false
+  EnforcedStyle: double_quotes
 
 # Include the comma at the end of multi-line arrays but not single-line arrays
 Style/TrailingCommaInArrayLiteral:
@@ -80,15 +88,13 @@ RSpec/IncludeExamples:
 RSpec/LeakyLocalVariable: 
   Enabled: true
 
-# Checks if example groups contain too many let and subject calls.
-# Increased from the Omakase default of 5
+# Not enforced as we occasionally want to check multiple things in long running / resource intensive tests
 RSpec/MultipleMemoizedHelpers:
-  Max: 10
+  Enabled: false
 
 # Checks that message expectations are set using spies.
-# We don't currently enforce this behaviour
 RSpec/MessageSpies:
-  Enabled: false
+  Enabled: true
 
 # Enforces use of a maximum of 1 expect(...) per test
 # We don't enforce this behaviour as we allow multiple expects per test if there is complex setup or checking to be performed
@@ -106,11 +112,10 @@ RSpec/Output:
   Enabled: true
 
 # This enforces the removal of any response to enforced mocks (i.e. expect(...).to receive(...).and_return(...) is invalid)
-# We don't enforce this behaviour
+# Works well with the MessageSpies style
 RSpec/StubbedMock:
-  Enabled: false
+  Enabled: true
 
-# Checks for stubbed test subjects.
-# Is currently not enforced, to avoid rewriting existing applications
+# Require subjects to be named
 RSpec/SubjectStub:
-  Enabled: false
+  Enabled: true

@@ -1,0 +1,17 @@
+inherit_from:
+  - rubocop.yml
+
+# This alternative coding standard removes some of the stricter rules that we want to enforce in new projects, 
+# but don't want to re-write existing projects to enforce.
+
+# Requires significant rewriting of tests for existing projects
+RSpec/MessageSpies:
+  Enabled: false
+
+# Requires significant rewriting of tests for existing projects
+RSpec/StubbedMock:
+  Enabled: false
+
+# Requires significant rewriting of tests for existing projects
+RSpec/SubjectStub:
+  Enabled: false
