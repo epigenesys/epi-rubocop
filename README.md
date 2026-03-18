@@ -9,7 +9,7 @@ This gem is intended to document and enforce the Ruby, Rails and RSpec coding st
 1. Add this to your Gemfile:
 
     ```ruby
-    gem "epi-rubocop", require: false, group: [ :development ], git: 'git@github.com:epigenesys/epi-rubocop.git'
+    gem "epi-rubocop", require: false, group: [ :development ], git: 'https://github.com/epigenesys/epi-rubocop.git'
     ```
 
 2. Run `bundle install` to install Rubocop.
