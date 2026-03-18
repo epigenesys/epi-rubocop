@@ -27,6 +27,7 @@ Layout/EmptyLinesAroundModuleBody:
 
 # Our in-house style is not to indent methods after a private / protected keyword
 Layout/IndentationConsistency:
+  Enabled: true
   EnforcedStyle: normal
 
 # Our in-house style is to include spaces after a lambda literal
