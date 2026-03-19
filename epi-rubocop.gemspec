@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
 
   s.license = "MIT"
 
-  s.version = "1.1.2"
+  s.version = "1.1.3"
   s.platform = Gem::Platform::RUBY
 
   s.add_dependency "rubocop", ">= 1.74"
-  s.add_dependency "rubocop-rails-omakase", ">= 1.1.0" 
+  s.add_dependency "rubocop-rails-omakase", ">= 1.1.0"
   s.add_dependency "rubocop-rails", ">= 2.30"
   s.add_dependency "rubocop-performance", ">= 1.24"
   s.add_dependency "rubocop-rspec", ">= 2.22.0"

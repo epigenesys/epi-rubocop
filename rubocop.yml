@@ -58,6 +58,8 @@ Layout/TrailingEmptyLines:
 # Our in-house style is to enforce double_quotes where possible
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+  Exclude:
+    - 'config/initializers/version.rb'
 
 # Include the comma at the end of multi-line arrays but not single-line arrays
 Style/TrailingCommaInArrayLiteral:
@@ -86,7 +88,7 @@ RSpec/IncludeExamples:
 
 # Checks for local variables from outer scopes used inside examples
 # new in 3.8
-RSpec/LeakyLocalVariable: 
+RSpec/LeakyLocalVariable:
   Enabled: true
 
 # Not enforced as we occasionally want to check multiple things in long running / resource intensive tests
