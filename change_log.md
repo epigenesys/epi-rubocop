@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Each release should be in the following format: [Vx.y.z] - release date yyyy-mm-dd
 
+## V1.2.0 - Unreleased
+
+## Changed
+
+- Relaxed some of the rspec rules for the legacy coding standard to avoid having to re-write lots of the codebase. 
+
 ## V1.1.3 - 2026-03-19
 
 ### Fixed
