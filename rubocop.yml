@@ -5,9 +5,24 @@ inherit_gem:
 plugins:
   - rubocop-rspec
 
+# Where a project is using Yarn, Rubocop can be slow to run as it'll also attempt to apply rules to the node_modules folder.
+# Adding this will stop it from linting that folder:
+AllCops:
+  Exclude:
+    - !ruby/regexp /\/node_modules\//
+
 # ---
 # Layout
 # ---
+
+# This cop condenses multiple empty lines down to a single line
+Layout/EmptyLines:
+  Enabled: true
+
+# Makes the empty lines consistent around the modifier tags
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: true
+  EnforcedStyle: around
 
 # Do not include empty lines between the code inside do and end keywords
 Layout/EmptyLinesAroundBlockBody:
@@ -108,6 +123,11 @@ RSpec/MultipleExpectations:
 # We don't enforce this behaviour
 RSpec/NamedSubject:
   Enabled: false
+
+# Limit the amount of nested contexts for RSpec tests
+RSpec/NestedGroups:
+  Enabled: true
+  Max: 5
 
 # Checks for the use of output calls like puts and print in specs.
 # new in 3.9

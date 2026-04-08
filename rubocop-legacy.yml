@@ -20,6 +20,10 @@ RSpec/SubjectStub:
 RSpec/IndexedLet:
   Enabled: false
 
-# Requires significant rewriting of tests for existing projects
+# Allow a larger amount of nesting for legacy projects
 RSpec/NestedGroups:
+  Max: 7
+
+# Requires significant rewriting of tests for existing projects
+RSpec/LetSetup:
   Enabled: false

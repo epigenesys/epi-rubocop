@@ -6,9 +6,17 @@ Each release should be in the following format: [Vx.y.z] - release date yyyy-mm-
 
 ## V1.2.0 - Unreleased
 
+## Added
+
+- Exclude the node-modules folder from rubocop to increase speed. [Issue 5](https://github.com/epigenesys/epi-rubocop/issues/5)
+- Add Layout/EmptyLinesAroundAccessModifier cop. [Issue 6](https://github.com/epigenesys/epi-rubocop/issues/6)
+- Enabled the Layout/EmptyLines rule. [Issue 8](https://github.com/epigenesys/epi-rubocop/issues/8)
+
 ## Changed
 
-- Relaxed some of the rspec rules for the legacy coding standard to avoid having to re-write lots of the codebase. 
+- Updated RSpec/NestedGroups to be 5 for the main standard and 7 for the legacy standard. [Issue 1](https://github.com/epigenesys/epi-rubocop/issues/1)
+- Removed RSpec/LetSetup from the legacy standard. [Issue 2](https://github.com/epigenesys/epi-rubocop/issues/2)
+- Removed Rspec/IndexedLet from the legacy standard. [Issue 3](https://github.com/epigenesys/epi-rubocop/issues/3)
 
 ## V1.1.3 - 2026-03-19
 
