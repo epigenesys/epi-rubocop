@@ -15,3 +15,15 @@ RSpec/StubbedMock:
 # Requires significant rewriting of tests for existing projects
 RSpec/SubjectStub:
   Enabled: false
+
+# Requires significant rewriting of tests for existing projects
+RSpec/IndexedLet:
+  Enabled: false
+
+# Allow a larger amount of nesting for legacy projects
+RSpec/NestedGroups:
+  Max: 7
+
+# Requires significant rewriting of tests for existing projects
+RSpec/LetSetup:
+  Enabled: false
