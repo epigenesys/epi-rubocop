@@ -41,9 +41,45 @@ inherit_gem:
 # Add project specific rules here, if required
 ```
 
+### Setting up Git to ignore commits for blame
+
+Commits that only contain formatting changes could be shown when using `git blame`, which can hide commits that make more meaningful changes to the code.
+
+To resolve this, you can configure a file with commits that should be ignored when using `git blame`. Find any commits that contain only formatting changes, put their hashes into a file in your repository, and commit it. A common naming convention is `.git-blame-ignore-revs`.
+
+```plain
+# .git-blame-ignore-revs
+
+3138f301f381bd2c193a5a6688ebac53ff304b29
+e053336135725620d859b7553ab245c24f7a35a1
+c304bb5a488647c7fe8a9ffa5957a118dd763461
+579cf6411403fd4646a65ddac351ff52583be97a
+```
+
+There are several methods to using this file with `git blame`.
+
+1. To use the file whenever you need to use it, you can pass the `--ignore-revs-file` flag to `git blame`
+
+    ```sh
+    git blame --ignore-revs-file .git-blame-ignore-revs <file>
+    ```
+
+1. You can configure the repository to always use the ignore file when using `git blame`, using the `blame.ignoreRevsFile` option.
+
+    ```sh
+    git config set blame.ignoreRevsFile .git-blame-ignore-revs
+    ```
+
+1. If you're on Git >= v2.52.0, you can globally set the `blame.ignoreRevsFile` option. Prefix the file path with `:(optional)` to mark the file as optional, which means if the file does not exist in the repository, then that option is ignored. This prevents `git blame` from erroring on repositories which do not have the ignore file.
+
+    ```sh
+    # Use quotes to avoid interpretation by the shell
+    git config set --global blame.ignoreRevsFile ':(optional).git-blame-ignore-revs'
+    ```
+
 ### Setting up VSCode to enforce these rules on every save
 
-1. Automatic enforcement of RuboCop rules is done automatically by the Ruby LSP extension.
+Automatic enforcement of RuboCop rules is done automatically by the Ruby LSP extension.
 
 ### Setting up GitLab CI to check these rules are enforced
 
@@ -65,6 +101,7 @@ rubocop:
   script:
     - bundle exec rubocop
 ```
+
 ---
 
 ## Development

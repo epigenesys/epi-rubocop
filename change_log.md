@@ -9,6 +9,7 @@ Each release should be in the following format: [Vx.y.z] - release date yyyy-mm-
 ### Changed
 
 - Configure `Style/StringLiterals` to be enforced for files under `spec/` as well. [#10](https://github.com/epigenesys/epi-rubocop/issues/10)
+- Update documentation with `ignore-revs-file` guidance.
 
 ## V1.2.1 - 2026-04-14
 
