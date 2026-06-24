@@ -4,15 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Each release should be in the following format: [Vx.y.z] - release date yyyy-mm-dd
 
+## Unreleased
+
+### Changed
+
+- Configure `Style/StringLiterals` to be enforced for files under `spec/` as well. [#10](https://github.com/epigenesys/epi-rubocop/issues/10)
+
 ## V1.2.1 - 2026-04-14
 
-## Added
+### Added
 
 - Exclude the node-modules folder from rubocop to increase speed. [Issue 5](https://github.com/epigenesys/epi-rubocop/issues/5)
 - Add Layout/EmptyLinesAroundAccessModifier cop. [Issue 6](https://github.com/epigenesys/epi-rubocop/issues/6)
 - Enabled the Layout/EmptyLines rule. [Issue 8](https://github.com/epigenesys/epi-rubocop/issues/8)
 
-## Changed
+### Changed
 
 - Updated RSpec/NestedGroups to be 5 for the main standard and 7 for the legacy standard. [Issue 1](https://github.com/epigenesys/epi-rubocop/issues/1)
 - Removed RSpec/LetSetup from the legacy standard. [Issue 2](https://github.com/epigenesys/epi-rubocop/issues/2)
@@ -38,5 +44,3 @@ Each release should be in the following format: [Vx.y.z] - release date yyyy-mm-
 - Enforced not indenting methods under private / protected keywords.
 - Used [rubocop-rails-omakase](https://github.com/rails/rubocop-rails-omakase) as a base set of rubocop rules.
 - Added [rubocop-rspec](https://github.com/rubocop/rubocop-rspec) along with some customisations of the rules.
-
-## Unreleased
