@@ -72,7 +72,13 @@ Layout/TrailingEmptyLines:
 
 # Our in-house style is to enforce double_quotes where possible
 Style/StringLiterals:
+  # Ensure that files under spec/ are included
+  inherit_mode:
+    merge:
+      - Include
   EnforcedStyle: double_quotes
+  Include:
+    - "spec/**/*"
   Exclude:
     - 'config/initializers/version.rb'
 
